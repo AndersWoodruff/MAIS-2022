@@ -16,3 +16,11 @@ def get_average_vector(user_tweets):
         user_average[dimension] = dimensional_sum / len(embedded_tweets.embeddings)
 
     return user_average
+
+""" (list, list) -> float
+Returns the cosine between vectors user1 and user2.
+"""
+def get_cosine_similarity(user1, user2):
+    user1 = np.array(user1)
+    user2 = np.array(user2)
+    return np.dot(user1, user2) /norm(user1)/norm(user2)
