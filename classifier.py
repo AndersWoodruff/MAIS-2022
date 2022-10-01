@@ -1,4 +1,4 @@
-from sklearn import preprocessor
+from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
 
@@ -6,7 +6,7 @@ from sklearn import metrics
 Returns a trained KNN model on the list of floats (similarities) and their labels (strings). 
 """
 def train_model(similarities, labels):
-    label_encoder = preprocessor.LabelEncoder()
+    label_encoder = preprocessing.LabelEncoder()
     
     #may not be necessary, only if following is given as a non-number
     numeric_labels = label_encoder.fit_transform(labels)
