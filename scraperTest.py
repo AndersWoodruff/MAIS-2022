@@ -8,7 +8,7 @@ import pandas as pd
 tweets_list1 = []
 
 # Using TwitterSearchScraper to scrape data and append tweets to list
-for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:{temp}').get_items()):
+for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:POTUS45').get_items()):
     if i>100:
         break
     tweets_list1.append([tweet.date, tweet.id, tweet.content, tweet.user.username])
