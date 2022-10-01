@@ -1,11 +1,8 @@
-from TwitterIDtoUsername import getHandles
-from webbrowser import Chrome
 import snscrape.modules.twitter as sntwitter
 import numpy as np
 import pandas as pd
 
 
-temp= getHandles([1969527638, 51878493], delayTime=0.5)
 
 # Creating list to append tweet data to
 tweets_list1 = []
