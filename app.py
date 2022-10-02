@@ -3,11 +3,12 @@ import classifier, vector_processing
 
 app = Flask(__name__)
 
-# to test web app
+model = pickle.load(open('model.pkl','rb')) # load saved model
+
 @app.route('/')
 def index():
    print('Request for index page received')
-   return 'index.html'
+   return render_template('index.html')
 
 if __name__ == '__main__':
    app.run()
