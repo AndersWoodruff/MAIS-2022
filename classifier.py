@@ -27,3 +27,11 @@ Returns the integer representation of whether or not the pair is likely to follo
 """  
 def make_prediction(model, similarity):
     return model.predict([similarity])
+<<<<<<< HEAD
+=======
+
+model = train_model([1.0, 1.23, 0.74], ["no", "no", 'yes'])
+
+# Save model to disk
+pickle.dump(model, open('model.pkl','wb'))
+>>>>>>> flask-webapp
