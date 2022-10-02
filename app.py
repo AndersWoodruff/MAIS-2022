@@ -7,7 +7,18 @@ import numpy as np
 
 app = Flask(__name__)
 
-classifier.train_model([[2],[3],[4],[5],[2]],[[0],[0],[0],[0],[0]]) # add training data here, right now contains test values
+tweets_all=np.load("All-tweets-paired-array.npy",allow_pickle=True)
+
+labels = []
+data = []
+
+for pair in tweets_all:
+   labels.append(pair[0][0])
+   user_a_tweets = [pair[0][x][0] for x in range(1, len(pair[0]))]
+   user_b_tweets = [pair[1][x][0] for x in range(1, len(pair[1]))]
+   data.append(get_cosine_similarity(get_average_vector(user_a_tweets), get_average_vector(user_b_tweets)))
+
+classifier.train_model(data,labels) # add training data here, right now contains test values
 model = pickle.load(open('model.pkl','rb')) # load saved model
 
 @app.route('/')
