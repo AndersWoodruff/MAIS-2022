@@ -6,7 +6,7 @@ tweets_all=np.load("All-tweets-array.npy",allow_pickle=True)
 
 
 paired_users=[]
-total_length=[]
+total_length=
 
 with open("data.csv") as csvfile:
     reader = csv.reader(csvfile) # change contents to floats
