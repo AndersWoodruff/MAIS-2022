@@ -1,11 +1,28 @@
-<!DOCTYPE HTML>
-<head>
-    <title>Birds of a Feather</title>
-</head>
+<!DOCTYPE html>
 <html>
+    <head>
+        <title>Birds of a Feather</title>
+    </head>
 
-<body>
-    <p>Testing</p>
-</body>
+
+    <body>
+        <h1>Birds of a Feather</h1>
+
+        <h3>Find out whether two Twitter users are compatible (likely to be friends) with each other based on the similarity between their last 100 posts.</h3>
+
+        <form action="{{ url_for('predictFromForm') }}" method="POST">
+            <fieldset>
+                <legend>Twitter User 1</legend>
+                <input name="username1" type="string" required>
+            </fieldset>
+            <fieldset>
+                <legend>Twitter User 2</legend>
+                <input name="username2" type="string" required>
+            </fieldset>
+            <input type="submit">
+        </form>
+        
+        {{ predictionText }}
+    </body>
 
 </html>
