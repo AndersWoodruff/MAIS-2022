@@ -11,7 +11,7 @@ def train_model(similarities, labels):
     model.fit(similarities, labels)
 
     with open("model.pkl", "wb") as model_pickle:
-        pickle.dump(model_pickle, model)
+        pickle.dump(model, model_pickle)
 
 """ (KNeighborsClassifier, list, list) -> float
 Returns the accuracy of the model's predictions for the given float similarities and strings labels.
