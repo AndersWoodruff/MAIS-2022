@@ -32,6 +32,10 @@ def predictFromForm():
    # predict whether they'll be friends or not!
    prediction = classifier.make_prediction(model,[cos_sim_data])
    print(prediction)
+   if prediction == 0:
+      prediction = "unlikely"
+   else:
+      prediction = "likely"
 
    return render_template('index.html', predictionText='These two users are {} likely to be friends!'.format(prediction))
 
