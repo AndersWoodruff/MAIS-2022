@@ -1,4 +1,6 @@
 import cohere
+import numpy as np
+from numpy.linalg import norm
 
 """ (list) -> list
 Takes a list of strings tweets, embeds them, and returns the average vector user_average.
@@ -23,4 +25,4 @@ Returns the cosine between vectors user1 and user2.
 def get_cosine_similarity(user1, user2):
     user1 = np.array(user1)
     user2 = np.array(user2)
-    return np.dot(user1, user2) /norm(user1)/norm(user2)
+    return np.dot(user1, user2)/(norm(user1)*norm(user2))
