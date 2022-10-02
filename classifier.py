@@ -7,7 +7,7 @@ import pickle
 Pickles a trained KNN model on the list of similarities (floats) and their labels (ints) into model.pkl. 
 """
 def train_model(similarities, labels):
-    model = KNeighborsClassifier(n_neighbors=5)
+    model = KNeighborsClassifier(n_neighbors=2) # should be 5, but is 2 because data set is small.
     model.fit(similarities, labels)
 
     with open("model.pkl", "wb") as model_pickle:

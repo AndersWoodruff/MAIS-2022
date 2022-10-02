@@ -7,7 +7,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-classifier.train_model([[2],[3],[4],[5],[2]],[[0],[0],[0],[0],[0]]) # add training data here, right now contains test values
+classifier.train_model([[0],[0.1],[0.5],[0.3],[0.2],[0.9],[0.7],[0.6],[0.8],[0.55]],[[0],[0],[0],[0],[0],[1],[1],[1],[1],[1]]) # add training data here, right now contains test values
 model = pickle.load(open('model.pkl','rb')) # load saved model
 
 @app.route('/')
@@ -31,6 +31,7 @@ def predictFromForm():
 
    # get the cosine similarity based on above step
    cos_sim_users = get_cosine_similarity(user1_avg,user2_avg) 
+   print(cos_sim_users)
    # cos_sim_users = get_cosine_similarity([1, 3, 5],[4, 2, 2]) # values for testing
 
    # predict whether they'll be friends or not!
