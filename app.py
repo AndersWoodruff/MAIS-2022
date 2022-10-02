@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import classifier
+import scrape_tweets
 from vector_processing import get_average_vector, get_cosine_similarity
 import pickle
 import numpy as np
@@ -17,19 +18,20 @@ def index():
 @app.route('/predictFromForm',methods=['POST'])
 def predictFromForm():
    # get usernames from user input and store in data
-
    usernames = [str(x) for x in request.form.values()] ## gets all inputs from POST rest API call  
    print(usernames)
 
    # scrape last 100 tweets of each user
+   tweet_data_1 = scrape_tweets.scrape_twitter(usernames[0])
+   tweet_data_2 = scrape_tweets.scrape_twitter(usernames[1])
    
    # get average vector for each user
-   # user1_avg = get_average_vector(tweet_data_1) # tweet_data are placeholders, use values from scrape (previous step)
-   # user2_avg = get_average_vector(tweet_data_2)
+   user1_avg = get_average_vector(tweet_data_1) # use values from scrape (previous step)
+   user2_avg = get_average_vector(tweet_data_2)
 
    # get the cosine similarity based on above step
-   # get_cosine_similarity(user1_avg,user2_avg) the actual code that should be used
-   cos_sim_users = get_cosine_similarity([1, 3, 5],[4, 2, 2]) # values for testing
+   cos_sim_users = get_cosine_similarity(user1_avg,user2_avg) 
+   # cos_sim_users = get_cosine_similarity([1, 3, 5],[4, 2, 2]) # values for testing
 
    # predict whether they'll be friends or not!
    prediction = classifier.make_prediction(model,[cos_sim_users])
